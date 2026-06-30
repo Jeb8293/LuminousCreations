@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminous Creations | Made to Glow. Made to Inspire.</title>
+  <meta name="description" content="Luminous Creations creates glowing, elegant brand experiences, custom gifts, event visuals, and handcrafted designs with a warm, luxe aesthetic." />
+  <meta property="og:title" content="Luminous Creations" />
+  <meta property="og:description" content="Made to glow. Made to inspire." />
+  <meta property="og:image" content="./assets/luminous-creations-logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2.4rem, 1.3rem + 3vw, 4.8rem);
+      --text-hero: clamp(3.1rem, 1rem + 7vw, 7rem);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.2rem;
+      --radius-xl: 1.75rem;
+      --radius-full: 9999px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Manrope', 'Helvetica Neue', sans-serif;
+      --color-bg: #060606;
+      --color-surface: #141414;
+      --color-surface-2: #1b1b1b;
+      --color-surface-offset: #212121;
+      --color-surface-offset-2: #272727;
+      --color-surface-dynamic: #2e2a24;
+      --color-border: rgba(255, 214, 145, 0.16);
+      --color-divider: rgba(255, 214, 145, 0.1);
+      --color-text: #f8f1e8;
+      --color-text-muted: #d1c2ae;
+      --color-text-faint: #9f8f79;
+      --color-text-inverse: #15120f;
+      --color-primary: #f0ba62;
+      --color-primary-hover: #ffd08a;
+      --color-primary-active: #dfa54c;
+      --color-primary-highlight: rgba(240, 186, 98, 0.12);
+      --color-gold: #f5c978;
+      --color-amber: #dd9641;
+      --color-shadow: rgba(240, 162, 59, 0.18);
+      --content-default: 1120px;
+      --content-wide: 1260px;
+      --hero-glow: radial-gradient(circle at top, rgba(255, 204, 120, 0.2), rgba(255, 204, 120, 0.02) 34%, transparent 60%);
+      --panel-glow: 0 0 0 1px rgba(246, 197, 113, 0.08), 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(221, 150, 65, 0.08);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255, 190, 100, 0.16), transparent 34%),
+        radial-gradient(circle at 20% 20%, rgba(255, 171, 60, 0.06), transparent 24%),
+        linear-gradient(180deg, #050505 0%, #090909 35%, #050505 100%);
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; border: none; background: none; cursor: pointer; }
+    ul { list-style: none; }
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+    .skip-link {
+      position: absolute;
+      left: var(--space-4);
+      top: -3rem;
+      background: var(--color-primary);
+      color: #100d09;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-full);
+      z-index: 200;
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    .embers {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .ember {
+      position: absolute;
+      bottom: -2rem;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 228, 183, 0.95) 0%, rgba(240, 177, 79, 0.86) 40%, rgba(240, 177, 79, 0) 72%);
+      filter: blur(0.1rem);
+      opacity: 0;
+      animation: rise linear infinite;
+    }
+    .ember:nth-child(odd) { width: 0.55rem; height: 0.55rem; }
+    .ember:nth-child(3n) { background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255, 203, 118, 0.9) 35%, rgba(221, 150, 65, 0) 75%); }
+
+    @keyframes rise {
+      0% { transform: translate3d(0, 0, 0) scale(0.8); opacity: 0; }
+      10% { opacity: 0.9; }
+      100% { transform: translate3d(var(--drift), -120vh, 0) scale(1.35); opacity: 0; }
+    }
+
+    .site-shell { position: relative; z-index: 1; }
+    .container {
+      width: min(calc(100% - 2rem), var(--content-default));
+      margin-inline: auto;
+    }
+    .section {
+      padding-block: clamp(var(--space-16), 9vw, var(--space-24));
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: rgba(255, 207, 138, 0.05);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 6, 6, 0.74);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition-interactive), background var(--transition-interactive);
+    }
+    .site-header.scrolled {
+      border-color: var(--color-divider);
+      background: rgba(10, 10, 10, 0.9);
+    }
+    .nav-wrap {
+      width: min(calc(100% - 2rem), var(--content-wide));
+      margin-inline: auto;
+      min-height: 4.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-height: 44px;
+    }
+    .brand-mark {
+      width: 2.9rem;
+      height: 2.9rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 214, 145, 0.3);
+      box-shadow: 0 0 26px rgba(240, 177, 79, 0.18);
+      flex-shrink: 0;
+    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .brand-text span {
+      display: block;
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--color-primary-hover); }
+    .nav-cta {
+      padding: 0.82rem 1.15rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 215, 153, 0.3);
+      background: linear-gradient(180deg, rgba(255, 213, 141, 0.16), rgba(255, 213, 141, 0.08));
+      color: var(--color-text);
+      box-shadow: 0 0 20px rgba(240, 177, 79, 0.08);
+    }
+
+    .hero {
+      min-height: calc(100dvh - 4.75rem);
+      display: grid;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--hero-glow);
+      z-index: -1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(var(--space-8), 5vw, var(--space-20));
+      align-items: center;
+    }
+    .hero-copy h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      line-height: 0.92;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      max-width: 10ch;
+      text-shadow: 0 0 28px rgba(240, 177, 79, 0.1);
+    }
+    .hero-copy p {
+      margin-top: var(--space-6);
+      color: var(--color-text-muted);
+      max-width: 58ch;
+    }
+    .hero-actions {
+      margin-top: var(--space-8);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: 0.95rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform var(--transition-interactive), box-shadow var(--transition-interactive), background var(--transition-interactive), color var(--transition-interactive);
+    }
+    .btn:hover, .btn:focus-visible { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(180deg, var(--color-primary-hover), var(--color-primary));
+      color: #120f0a;
+      box-shadow: 0 14px 35px rgba(221, 150, 65, 0.22), 0 0 26px rgba(240, 186, 98, 0.1);
+    }
+    .btn-secondary {
+      border: 1px solid var(--color-border);
+      background: rgba(255, 236, 206, 0.03);
+      color: var(--color-text);
+    }
+
+    .hero-card,
+    .card,
+    .feature-panel,
+    .cta-panel,
+    .contact-panel {
+      background: linear-gradient(180deg, rgba(27, 27, 27, 0.96), rgba(18, 18, 18, 0.96));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--panel-glow);
+    }
+    .hero-card {
+      padding: clamp(var(--space-5), 4vw, var(--space-8));
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before,
+    .card::before,
+    .feature-panel::before,
+    .cta-panel::before,
+    .contact-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 222, 166, 0.1), transparent 28%, transparent 70%, rgba(255, 180, 74, 0.08));
+      opacity: 0.65;
+    }
+    .hero-card > * { position: relative; z-index: 1; }
+    .hero-logo {
+      border-radius: calc(var(--radius-xl) - var(--space-3));
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255, 217, 157, 0.18);
+    }
+    .hero-logo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .hero-note {
+      margin-top: var(--space-5);
+      display: grid;
+      gap: var(--space-3);
+      color: var(--color-text-muted);
+    }
+    .hero-note strong {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    .about-grid,
+    .services-grid,
+    .process-grid,
+    .contact-grid {
+      display: grid;
+      gap: var(--space-6);
+    }
+    .about-grid { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
+    .lead-title,
+    .section-title {
+      margin-top: var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1;
+    }
+    .lead-copy {
+      margin-top: var(--space-5);
+      color: var(--color-text-muted);
+      max-width: 60ch;
+    }
+    .card, .feature-panel, .cta-panel, .contact-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(var(--space-5), 3vw, var(--space-8));
+    }
+    .stat-list {
+      margin-top: var(--space-8);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+    .stat {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 222, 166, 0.04);
+      border: 1px solid rgba(255, 215, 153, 0.08);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-primary-hover);
+      font-weight: 600;
+    }
+    .stat span { color: var(--color-text-faint); font-size: var(--text-sm); }
+
+    .services-grid {
+      margin-top: var(--space-8);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .feature-panel h3,
+    .card h3,
+    .process-step h3,
+    .contact-panel h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.05;
+      margin-bottom: var(--space-3);
+    }
+    .feature-panel p,
+    .card p,
+    .process-step p,
+    .contact-panel p,
+    .list li {
+      color: var(--color-text-muted);
+    }
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: var(--space-4);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 214, 145, 0.22);
+      background: rgba(255, 210, 136, 0.06);
+      box-shadow: 0 0 28px rgba(240, 177, 79, 0.08);
+      color: var(--color-primary);
+    }
+    .feature-icon svg { width: 1.35rem; height: 1.35rem; }
+
+    .split-panel {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+    .list {
+      display: grid;
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+    }
+    .list li {
+      display: flex;
+      gap: var(--space-3);
+      align-items: start;
+    }
+    .list li::before {
+      content: "✦";
+      color: var(--color-primary);
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .process-grid {
+      margin-top: var(--space-8);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .process-step {
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 214, 145, 0.12);
+      background: rgba(255, 249, 240, 0.03);
+      box-shadow: inset 0 1px 0 rgba(255, 224, 171, 0.04);
+    }
+    .process-step span {
+      display: inline-flex;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-6);
+      align-items: center;
+    }
+    .glow-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 204, 120, 0.75), transparent);
+      margin-block: var(--space-6);
+    }
+
+    .contact-grid { grid-template-columns: 1fr 1fr; margin-top: var(--space-8); }
+    .contact-panel a {
+      color: var(--color-primary-hover);
+    }
+    .contact-panel a:hover,
+    .contact-panel a:focus-visible { color: #ffe0a7; }
+    .contact-details {
+      display: grid;
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+    }
+    .contact-details div {
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .site-footer {
+      padding: var(--space-8) 0 var(--space-10);
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-faint);
+      font-size: var(--text-sm);
+    }
+    .footer-wrap {
+      width: min(calc(100% - 2rem), var(--content-wide));
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .split-panel,
+      .cta-panel,
+      .contact-grid,
+      .services-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      .stat-list { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: var(--space-10); }
+      .hero-copy h1 { max-width: 12ch; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-wrap { align-items: flex-start; padding-block: var(--space-3); }
+      .brand-text strong { font-size: 1.25rem; }
+      .brand-text span { letter-spacing: 0.12em; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+      .site-footer { text-align: center; }
+      .footer-wrap { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-reveal] { opacity: 1; transform: none; }
+      .ember { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="embers" aria-hidden="true">
+    <span class="ember" style="left:4%; animation-duration: 14s; animation-delay: -2s; --drift: 1.8rem;"></span>
+    <span class="ember" style="left:11%; animation-duration: 17s; animation-delay: -8s; --drift: -1rem;"></span>
+    <span class="ember" style="left:18%; animation-duration: 13s; animation-delay: -5s; --drift: 1.2rem;"></span>
+    <span class="ember" style="left:26%; animation-duration: 16s; animation-delay: -11s; --drift: -2rem;"></span>
+    <span class="ember" style="left:34%; animation-duration: 15s; animation-delay: -4s; --drift: 1.5rem;"></span>
+    <span class="ember" style="left:43%; animation-duration: 19s; animation-delay: -13s; --drift: -1.4rem;"></span>
+    <span class="ember" style="left:51%; animation-duration: 12s; animation-delay: -1s; --drift: 1rem;"></span>
+    <span class="ember" style="left:58%; animation-duration: 18s; animation-delay: -9s; --drift: -2.3rem;"></span>
+    <span class="ember" style="left:66%; animation-duration: 14s; animation-delay: -7s; --drift: 1.8rem;"></span>
+    <span class="ember" style="left:74%; animation-duration: 20s; animation-delay: -15s; --drift: -1.1rem;"></span>
+    <span class="ember" style="left:82%; animation-duration: 13s; animation-delay: -3s; --drift: 1.7rem;"></span>
+    <span class="ember" style="left:91%; animation-duration: 16s; animation-delay: -6s; --drift: -1.8rem;"></span>
+  </div>
+
+  <div class="site-shell">
+    <header class="site-header" id="top">
+      <div class="nav-wrap">
+        <a class="brand" href="#top" aria-label="Luminous Creations home">
+          <span class="brand-mark">
+            <img src="./assets/luminous-creations-logo.jpeg" alt="Luminous Creations candle logo" width="96" height="96" />
+          </span>
+          <span class="brand-text">
+            <strong>Luminous Creations</strong>
+            <span>Made to glow. Made to inspire.</span>
+          </span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a class="nav-cta" href="#contact">Start Your Vision</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <span class="section-label">Elegant • Warm • Luminous</span>
+            <h1>Design that glows long after the first impression.</h1>
+            <p>Luminous Creations is a luxe, candlelit-inspired brand presence built for beautiful launches, curated gifting, handmade products, events, and creative services that deserve a rich visual identity.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Book a Creative Consult</a>
+              <a class="btn btn-secondary" href="#services">Explore Offerings</a>
+            </div>
+          </div>
+
+          <aside class="hero-card" data-reveal>
+            <div class="hero-logo">
+              <img src="./assets/luminous-creations-logo.jpeg" alt="Luminous Creations logo with glowing candle and gold ring" width="900" height="1125" />
+            </div>
+            <div class="hero-note">
+              <strong>Black, charcoal, amber, and gold.</strong>
+              <p>This homepage is styled to echo the warmth in your logo, with dark charcoal cards, golden glow highlights, and ember motion floating through the background for a refined dramatic feel.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container about-grid">
+          <div data-reveal>
+            <span class="section-label">Brand story</span>
+            <h2 class="lead-title">A soft flame aesthetic with bold visual presence.</h2>
+            <p class="lead-copy">This layout gives Luminous Creations a premium small-business feel while keeping the message flexible enough for products, event styling, custom pieces, digital design, or creative services. The structure is intentionally easy to edit, so headings, packages, and contact details can be updated without rebuilding the whole site.</p>
+            <div class="stat-list" aria-label="Brand highlights">
+              <div class="stat">
+                <strong>Luxe</strong>
+                <span>High-contrast visual mood</span>
+              </div>
+              <div class="stat">
+                <strong>Warm</strong>
+                <span>Amber-led accent system</span>
+              </div>
+              <div class="stat">
+                <strong>Flexible</strong>
+                <span>Simple one-file setup</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" data-reveal>
+            <h3>Built for luminous brands</h3>
+            <p>Use this homepage for a creative studio, handcrafted product line, event decor brand, gift shop, candle business, or boutique service company. Each content block sits on charcoal-grey panels so the page stays readable while still feeling dramatic and atmospheric.</p>
+            <div class="glow-line" aria-hidden="true"></div>
+            <ul class="list" role="list">
+              <li>Large hero statement to introduce the brand instantly.</li>
+              <li>Service panels with room for signature offers or collections.</li>
+              <li>Process section that explains how clients work with you.</li>
+              <li>Contact area designed for inquiries, consultations, or orders.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container" data-reveal>
+          <span class="section-label">Signature offerings</span>
+          <h2 class="section-title">Services and collections with a warm afterglow.</h2>
+          <div class="services-grid">
+            <article class="feature-panel">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c2.4 2.8 4 5 4 8a4 4 0 1 1-8 0c0-3 1.4-5.2 4-8Z"/><path d="M7 20h10"/></svg>
+              </div>
+              <h3>Custom product lines</h3>
+              <p>Feature candles, gift boxes, artisan collections, seasonal drops, or made-to-order items with elevated presentation and space for storytelling.</p>
+            </article>
+            <article class="feature-panel">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h16"/></svg>
+              </div>
+              <h3>Brand visuals</h3>
+              <p>Showcase logo design, social graphics, launch assets, printables, menus, event signage, or digital creative support under one polished brand umbrella.</p>
+            </article>
+            <article class="feature-panel">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 18h14"/><path d="M7 18V8l5-3 5 3v10"/><path d="M10 12h4"/></svg>
+              </div>
+              <h3>Event styling</h3>
+              <p>Present intimate event concepts, luxe table styling, branded experiences, welcome displays, or curated ambiance packages with visual confidence.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split-panel">
+          <div class="card" data-reveal>
+            <span class="section-label">Why it works</span>
+            <h2 class="section-title">The design mirrors your logo instead of fighting it.</h2>
+            <p class="lead-copy">The black base keeps the page dramatic, the charcoal cards create clean reading areas, and the gold-amber highlights pull directly from the candle flame and circular brushstroke in the logo.</p>
+          </div>
+          <div class="card" data-reveal>
+            <h3>Visual direction details</h3>
+            <ul class="list" role="list">
+              <li>Background stays nearly black for cinematic depth.</li>
+              <li>Cards use dark charcoal grey for contrast and legibility.</li>
+              <li>Buttons and accents use amber-gold gradients and soft glow.</li>
+              <li>Animated embers add movement without overwhelming the content.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container" data-reveal>
+          <span class="section-label">Client journey</span>
+          <h2 class="section-title">A simple path from spark to finished creation.</h2>
+          <div class="process-grid">
+            <article class="process-step">
+              <span>01</span>
+              <h3>Discover</h3>
+              <p>Share your vision, audience, timeline, and the feeling you want people to remember.</p>
+            </article>
+            <article class="process-step">
+              <span>02</span>
+              <h3>Curate</h3>
+              <p>Shape the mood, choose the offer, and refine the visual story around your brand.</p>
+            </article>
+            <article class="process-step">
+              <span>03</span>
+              <h3>Create</h3>
+              <p>Develop the final product, service presentation, or event-ready design details.</p>
+            </article>
+            <article class="process-step">
+              <span>04</span>
+              <h3>Glow</h3>
+              <p>Launch confidently with a polished brand experience that feels warm, memorable, and complete.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container cta-panel" data-reveal>
+          <div>
+            <span class="section-label">Made to inspire</span>
+            <h2 class="section-title">Turn your concept into something people can feel.</h2>
+            <p class="lead-copy">This section can become your featured call to action, booking section, waitlist prompt, or product launch invitation. It is already styled to be the strongest conversion point on the page.</p>
+          </div>
+          <div class="card">
+            <h3>Suggested calls to action</h3>
+            <ul class="list" role="list">
+              <li>Book a consultation</li>
+              <li>Request custom pricing</li>
+              <li>Shop the latest collection</li>
+              <li>Inquire about event styling</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container" data-reveal>
+          <span class="section-label">Get in touch</span>
+          <h2 class="section-title">Ready to build a glowing brand presence?</h2>
+          <div class="contact-grid">
+            <div class="contact-panel">
+              <h3>Contact details</h3>
+              <p>Swap in your real business email, phone number, and social links here. This one-file version is set up so you can edit the text directly inside the HTML.</p>
+              <div class="contact-details">
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:hello@luminouscreations.com">hello@luminouscreations.com</a></p>
+                </div>
+                <div>
+                  <strong>Instagram</strong>
+                  <p><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">@luminouscreations</a></p>
+                </div>
+                <div>
+                  <strong>Consultations</strong>
+                  <p>By appointment for custom projects, launches, and styled experiences.</p>
+                </div>
+              </div>
+            </div>
+            <div class="contact-panel">
+              <h3>Editing notes</h3>
+              <p>Replace the placeholder contact information, service names, and descriptive copy with your real business details. The logo file is already linked locally, so the page will keep using it as long as the image stays in the assets folder.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="mailto:hello@luminouscreations.com">Email the Brand</a>
+                <a class="btn btn-secondary" href="#top">Back to top</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <p>Luminous Creations — designed with ember motion, charcoal panels, and amber glow.</p>
+        <p>Built as a single static HTML file for easy upload and editing.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    const revealItems = document.querySelectorAll('[data-reveal]');
+
+    const setHeaderState = () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+    setHeaderState();
+    window.addEventListener('scroll', setHeaderState, { passive: true });
+  </script>
+</body>
+</html>
