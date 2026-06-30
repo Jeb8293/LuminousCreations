@@ -9,7 +9,8 @@
 
 <body>
 
-<div class="embers"></div>
+<div class="cursor-glow"></div>
+<div class="ember-layer"></div>
 
 <header class="site-header">
     <div class="logo">Luminous Creations</div>
@@ -28,17 +29,25 @@
 
 <main>
 
-<section class="card hero-card" id="home">
-    <p class="eyebrow">Handcrafted Candles</p>
-    <h1>Luminous Creations</h1>
-    <p>Hero section placeholder: brand tagline, featured candle image, short welcome message, and primary call-to-action go here.</p>
-    <a href="#shop" class="button">Shop Now</a>
+<section class="hero" id="home">
+    <div class="smoke"></div>
+
+    <div class="hero-content reveal">
+        <p class="eyebrow">Handcrafted Candles</p>
+        <h1>Luminous Creations</h1>
+        <p>Hero placeholder: tagline, brand introduction, featured candle image, and welcome message go here.</p>
+
+        <div class="hero-buttons">
+            <a href="#shop" class="button">Shop Now</a>
+            <a href="#custom" class="button secondary">Custom Orders</a>
+        </div>
+    </div>
 </section>
 
-<section class="card" id="shop">
+<section class="card reveal" id="shop">
     <p class="eyebrow">Featured Collection</p>
     <h2>Best Sellers</h2>
-    <p>Placeholder for featured products, seasonal scents, customer favorites, and candle photos.</p>
+    <p>Placeholder for featured candles, seasonal scents, product photos, prices, and best-selling items.</p>
 
     <div class="product-grid">
         <div class="product-card">
@@ -61,23 +70,23 @@
     </div>
 </section>
 
-<section class="card" id="about">
+<section class="card reveal" id="about">
     <p class="eyebrow">Our Story</p>
     <h2>About Luminous Creations</h2>
-    <p>Placeholder for owner story, brand mission, candle-making process, inspiration behind the business, and what makes Luminous Creations special.</p>
+    <p>Placeholder for the owner story, brand mission, inspiration, candle-making process, and what makes the business special.</p>
 </section>
 
-<section class="card" id="custom">
+<section class="card reveal" id="custom">
     <p class="eyebrow">Made for You</p>
     <h2>Custom Orders</h2>
-    <p>Placeholder for custom candle options, event favors, color choices, scent requests, gift sets, order timelines, and request form instructions.</p>
+    <p>Placeholder for custom candle options, gift sets, event favors, colors, scents, order timelines, and request instructions.</p>
     <a href="#contact" class="button">Request Custom Order</a>
 </section>
 
-<section class="card" id="delivery">
+<section class="card reveal" id="delivery">
     <p class="eyebrow">Local Service</p>
     <h2>Local Delivery</h2>
-    <p>Placeholder for delivery radius, fees, scheduling information, delivery days, address checker, and local order instructions.</p>
+    <p>Placeholder for delivery radius, local delivery fees, schedule, address checker, and order requirements.</p>
 
     <form class="delivery-form">
         <input type="text" placeholder="Enter delivery address">
@@ -85,7 +94,7 @@
     </form>
 </section>
 
-<section class="card">
+<section class="card reveal">
     <p class="eyebrow">Customer Love</p>
     <h2>Testimonials</h2>
 
@@ -107,9 +116,9 @@
     </div>
 </section>
 
-<section class="card">
+<section class="card reveal">
     <p class="eyebrow">Gallery</p>
-    <h2>Instagram / Product Photos</h2>
+    <h2>Product Photos</h2>
 
     <div class="gallery-grid">
         <div>Photo</div>
@@ -121,10 +130,10 @@
     </div>
 </section>
 
-<section class="card" id="contact">
+<section class="card reveal" id="contact">
     <p class="eyebrow">Connect</p>
     <h2>Contact</h2>
-    <p>Placeholder for email, phone number, social media links, business hours, wholesale inquiries, and general contact form.</p>
+    <p>Placeholder for email, phone, social media, business hours, wholesale inquiries, and general contact information.</p>
 
     <form class="contact-form">
         <input type="text" placeholder="Name">
