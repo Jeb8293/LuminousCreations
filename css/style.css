@@ -1,1 +1,233 @@
+/* --------------------------
+RESET
+--------------------------- */
 
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:#040404;
+
+    color:#F5F5F5;
+
+    font-family:'Montserrat',sans-serif;
+
+}
+
+/* --------------------------
+HEADER
+--------------------------- */
+
+header{
+
+    width:90%;
+
+    margin:auto;
+
+    padding:40px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo h1{
+
+    font-family:'Cinzel',serif;
+
+    font-size:3rem;
+
+    color:#FFE0BC;
+
+    letter-spacing:4px;
+
+    line-height:1;
+
+    text-shadow:
+
+    0 0 8px #ff8c42,
+
+    0 0 25px #ff5e00;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:40px;
+
+}
+
+nav a{
+
+    color:#F2D4B4;
+
+    text-decoration:none;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:white;
+
+}
+
+/* --------------------------
+MAIN
+--------------------------- */
+
+main{
+
+    width:min(1400px,90%);
+
+    margin:auto;
+
+}
+
+/* --------------------------
+CARD
+--------------------------- */
+
+.card{
+
+    position:relative;
+
+    margin:45px 0;
+
+    padding:70px;
+
+    background:#0C0C0C;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,145,60,.10);
+
+}
+
+/* Ember Glow */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:25px;
+
+    right:25px;
+
+    bottom:-10px;
+
+    height:18px;
+
+    border-radius:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        #ff2a00,
+
+        #ff7a00,
+
+        #ff3c00,
+
+        transparent
+
+    );
+
+    filter:blur(14px);
+
+}
+
+/* Soft Glow */
+
+.card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:24px;
+
+    box-shadow:
+
+    0 0 18px rgba(255,110,0,.12),
+
+    inset 0 0 18px rgba(255,130,40,.04);
+
+    pointer-events:none;
+
+}
+
+.card h2{
+
+    font-family:'Cinzel',serif;
+
+    font-size:2rem;
+
+    letter-spacing:3px;
+
+    color:#FFE6C8;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.card p{
+
+    text-align:center;
+
+    line-height:2;
+
+    color:#D4D4D4;
+
+    letter-spacing:1px;
+
+}
+
+/* --------------------------
+FOOTER
+--------------------------- */
+
+footer{
+
+    text-align:center;
+
+    padding:80px;
+
+    color:#888;
+
+}
