@@ -1,155 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luminous Creations</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luminous Creations</title>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="cursor-glow"></div>
-<div class="ember-layer"></div>
+<!-- Ambient Effects -->
+<canvas id="embers"></canvas>
+<div id="cursor-glow"></div>
 
-<header class="site-header">
-    <div class="logo">Luminous Creations</div>
-
-    <button class="menu-toggle" id="menuToggle">☰</button>
-
-    <nav class="nav" id="navMenu">
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#custom">Custom</a>
-        <a href="#delivery">Delivery</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<!-- Navigation -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">Luminous Creations</div>
+    <nav>
+      <a href="#">Shop</a>
+      <a href="#">Custom</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<main>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
 
-<section class="hero" id="home">
-    <div class="smoke"></div>
+  <div class="hero-content">
+    <h1>Elevate Your Atmosphere</h1>
+    <p>Placeholder luxury description crafted to evoke warmth, calm, and refinement.</p>
 
-    <div class="hero-content reveal">
-        <p class="eyebrow">Handcrafted Candles</p>
-        <h1>Luminous Creations</h1>
-        <p>Hero placeholder: tagline, brand introduction, featured candle image, and welcome message go here.</p>
+    <div class="hero-buttons">
+      <button class="btn primary">Shop Now</button>
+      <button class="btn secondary">Custom Orders</button>
+    </div>
+  </div>
 
-        <div class="hero-buttons">
-            <a href="#shop" class="button">Shop Now</a>
-            <a href="#custom" class="button secondary">Custom Orders</a>
-        </div>
-    </div>
+  <div class="hero-image">
+    <img src="https://picsum.photos/800/900?random=1" alt="Candle">
+  </div>
 </section>
 
-<section class="card reveal" id="shop">
-    <p class="eyebrow">Featured Collection</p>
-    <h2>Best Sellers</h2>
-    <p>Placeholder for featured candles, seasonal scents, product photos, prices, and best-selling items.</p>
-
-    <div class="product-grid">
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Product Name</h3>
-            <p>Scent notes, size, price, and short product description.</p>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Product Name</h3>
-            <p>Scent notes, size, price, and short product description.</p>
-        </div>
-
-        <div class="product-card">
-            <div class="product-image">Product Image</div>
-            <h3>Product Name</h3>
-            <p>Scent notes, size, price, and short product description.</p>
-        </div>
-    </div>
-</section>
-
-<section class="card reveal" id="about">
-    <p class="eyebrow">Our Story</p>
-    <h2>About Luminous Creations</h2>
-    <p>Placeholder for the owner story, brand mission, inspiration, candle-making process, and what makes the business special.</p>
-</section>
-
-<section class="card reveal" id="custom">
-    <p class="eyebrow">Made for You</p>
-    <h2>Custom Orders</h2>
-    <p>Placeholder for custom candle options, gift sets, event favors, colors, scents, order timelines, and request instructions.</p>
-    <a href="#contact" class="button">Request Custom Order</a>
-</section>
-
-<section class="card reveal" id="delivery">
-    <p class="eyebrow">Local Service</p>
-    <h2>Local Delivery</h2>
-    <p>Placeholder for delivery radius, local delivery fees, schedule, address checker, and order requirements.</p>
-
-    <form class="delivery-form">
-        <input type="text" placeholder="Enter delivery address">
-        <button type="button">Check Delivery</button>
-    </form>
-</section>
-
-<section class="card reveal">
-    <p class="eyebrow">Customer Love</p>
-    <h2>Testimonials</h2>
-
-    <div class="testimonial-grid">
-        <div class="testimonial">
-            <p>“Customer review placeholder goes here.”</p>
-            <span>Customer Name</span>
-        </div>
-
-        <div class="testimonial">
-            <p>“Customer review placeholder goes here.”</p>
-            <span>Customer Name</span>
-        </div>
-
-        <div class="testimonial">
-            <p>“Customer review placeholder goes here.”</p>
-            <span>Customer Name</span>
-        </div>
-    </div>
-</section>
-
-<section class="card reveal">
-    <p class="eyebrow">Gallery</p>
-    <h2>Product Photos</h2>
-
-    <div class="gallery-grid">
-        <div>Photo</div>
-        <div>Photo</div>
-        <div>Photo</div>
-        <div>Photo</div>
-        <div>Photo</div>
-        <div>Photo</div>
-    </div>
-</section>
-
-<section class="card reveal" id="contact">
-    <p class="eyebrow">Connect</p>
-    <h2>Contact</h2>
-    <p>Placeholder for email, phone, social media, business hours, wholesale inquiries, and general contact information.</p>
-
-    <form class="contact-form">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Message"></textarea>
-        <button type="button">Send Message</button>
-    </form>
-</section>
-
-</main>
-
-<footer>
-    <p>© 2026 Luminous Creations. All rights reserved.</p>
-</footer>
-
-<script src="js/script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
