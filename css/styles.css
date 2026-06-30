@@ -1,182 +1,179 @@
-/* ===============================
-   GLOBAL STYLES
-================================= */
-
 body {
   margin: 0;
-  font-family: "Georgia", serif;
-  background: radial-gradient(circle at top, #111 0%, #000 80%);
+  font-family: Georgia, serif;
+  background: radial-gradient(circle at top, #111, #000 80%);
   color: #f5f2e8;
-  overflow-x: hidden;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ===============================
-   EMBERS CANVAS
-================================= */
-
+/* ===== EMBERS ===== */
 #embers {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
-/* ===============================
-   CURSOR GLOW
-================================= */
-
+/* ===== CURSOR ===== */
 #cursor-glow {
   position: fixed;
   width: 300px;
   height: 300px;
   background: radial-gradient(circle, rgba(255,140,60,0.25), transparent 70%);
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  mix-blend-mode: screen;
+  z-index: 2;
 }
 
-/* ===============================
-   NAVIGATION
-================================= */
-
+/* ===== NAV ===== */
 .nav {
   position: fixed;
-  top: 0;
   width: 100%;
-  backdrop-filter: blur(12px);
-  background: rgba(15,15,15,0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
 }
 
 .nav-inner {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
-  align-items: center;
 }
 
 .nav a {
-  margin-left: 24px;
-  color: #eae3d2;
+  margin-left: 20px;
+  color: #eee;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-.nav a:hover {
-  color: #ffb76b;
-}
-
-/* ===============================
-   HERO SECTION
-================================= */
-
+/* ===== HERO ===== */
 .hero {
-  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
   align-items: center;
   padding: 120px 80px;
-  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
+  z-index: 3;
 }
 
-/* Smoke / lighting overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at bottom, rgba(255,120,40,0.1), transparent 70%);
-  animation: glowPulse 6s ease-in-out infinite alternate;
+  background: radial-gradient(circle at bottom, rgba(255,120,40,0.15), transparent);
 }
 
-@keyframes glowPulse {
-  from { opacity: 0.4; }
-  to { opacity: 0.7; }
-}
-
-/* Hero text */
-.hero-content {
-  z-index: 2;
-  max-width: 500px;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  color: #fff5e6;
-}
-
-.hero p {
-  color: #cfc7b8;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-/* Hero image */
-
-.hero-image img {
+.hero img {
   width: 100%;
   border-radius: 20px;
-  animation: slowZoom 20s infinite alternate ease-in-out;
+  animation: zoom 20s infinite alternate;
 }
 
-@keyframes slowZoom {
+@keyframes zoom {
   from { transform: scale(1); }
   to { transform: scale(1.08); }
 }
 
-/* ===============================
-   BUTTONS
-================================= */
-
+/* ===== BUTTONS ===== */
 .btn {
-  padding: 14px 28px;
-  margin-right: 12px;
+  padding: 12px 24px;
   border-radius: 30px;
   border: none;
+  margin-right: 10px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.4s ease;
 }
 
 .primary {
   background: #ff9d4d;
-  color: black;
-  box-shadow: 0 0 15px rgba(255,150,80,0.6);
-  animation: breath 3s infinite ease-in-out;
+  box-shadow: 0 0 20px rgba(255,140,60,0.8);
 }
 
 .secondary {
   background: transparent;
+  border: 1px solid #aaa;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
-@keyframes breath {
-  0%,100% { box-shadow: 0 0 10px rgba(255,140,60,0.4); }
-  50% { box-shadow: 0 0 25px rgba(255,140,60,0.9); }
+/* ===== PRODUCTS ===== */
+.products {
+  padding: 80px;
+  position: relative;
+  z-index: 3;
 }
 
-/* ===============================
-   RESPONSIVE
-================================= */
+.section-title {
+  margin-bottom: 40px;
+}
 
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.product-card {
+  background: #111;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.product-card::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 20%;
+  width: 60%;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255,120,40,0.6), transparent);
+  filter: blur(15px);
+  opacity: 0.5;
+}
+
+/* hover lift */
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.product-card:hover::after {
+  opacity: 0.9;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+
+.product-card span {
+  display: block;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* ===== REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
 @media(max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
-  }
-
-  .nav-inner {
-    padding: 20px;
   }
 }
